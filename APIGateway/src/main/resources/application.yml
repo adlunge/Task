@@ -1,0 +1,22 @@
+server:
+  port: 8085
+  
+#application name and routing  
+spring:
+  application:
+    name: API-GATEWAY
+    
+  cloud:
+    gateway:
+      routes:
+      - id: BOOK-SERVICE
+        uri: lb://BOOK-SERVICE
+        predicates:
+          - Path=/book/**
+         
+      - id: AUTHOR-SERVICE
+        uri: lb://AUTHOR-SERVICE
+        predicates:
+          - Path=/author/**
+      
+ 
